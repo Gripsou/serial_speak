@@ -2,18 +2,8 @@
  * BIBLIOTHEQUES
  ************************************************************************/
 using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.IO;
-using System.IO.Ports;
 
 /************************************************************************
  * ESPACE DE NOM : SerialSpeak
@@ -32,20 +22,20 @@ namespace SerialSpeak
         //------------------------------------------------------
         //-------- Recherche de dossier dans un dossier --------
         //------------------------------------------------------
-        public static void callSearch_folder(string fol)
+        public static void callSearch_folder( string fol )
         {
-            DirectoryInfo di = new DirectoryInfo(@fol);
+            DirectoryInfo di = new DirectoryInfo( @fol );
             try
             {
                 //écriture dans la console de tous les dossiers trouvé dans à l'adresse indiquée
-                foreach (var dir in di.GetDirectories())
+                foreach ( var dir in di.GetDirectories( ) )
                 {
-                    Console.WriteLine(dir.Name);
+                    Console.WriteLine( dir.Name );
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                MessageBox.Show("ERREUR : " + ex.Message, "Erreur dans la procédure de recherche");
+                MessageBox.Show( "ERREUR : " + ex.Message, "Erreur dans la procédure de recherche" );
             }
 
         }
@@ -53,19 +43,19 @@ namespace SerialSpeak
         //--------------------------------------------------------
         //-------- Recherche d'un fichier dans un dossier --------
         //--------------------------------------------------------
-        public static void callSearch_files(string fol)
+        public static void callSearch_files( string fol )
         {
-            DirectoryInfo di = new DirectoryInfo(@fol);
+            DirectoryInfo di = new DirectoryInfo( @fol );
             try
             {
-                foreach (var fi in di.GetFiles())
+                foreach( var fi in di.GetFiles( ) )
                 {
-                    Console.WriteLine(fi.Name);
+                    Console.WriteLine( fi.Name );
                 }
             }
-            catch(Exception ex)
+            catch( Exception ex )
             {
-                MessageBox.Show("ERREUR : " + ex.Message, "Erreur dans la procédure de recherche");
+                MessageBox.Show( "ERREUR : " + ex.Message, "Erreur dans la procédure de recherche" );
             }
         }
 

@@ -2,11 +2,6 @@
  * BIBLIOTHEQUES
  ************************************************************************/
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Timers;
 
 /************************************************************************
  * ESPACE DE NOM : checkSerial
@@ -39,10 +34,10 @@ namespace checkSerial
         //==============================
         //======== Constructeur ========
         //==============================
-        public TimerOut(double per, timerAction t_act, int timerMode)
+        public TimerOut( double per, timerAction t_act, int timerMode )
         {
             t_handle = t_act;           //attribution de la fonction à déclencher via des Delegate-Handle
-            setTimer(per, timerMode);    //appel de la fonction de config
+            setTimer( per, timerMode );    //appel de la fonction de config
         }
 
         //==================================================================
@@ -52,7 +47,7 @@ namespace checkSerial
         //-----------------------------------
         //-------- Création du timer --------
         //-----------------------------------
-        private void setTimer(double periode, int mode)
+        private void setTimer( double periode, int mode )
         {
             // Create a timer with a "periode" interval.
             aTimer = new System.Timers.Timer(periode);
@@ -61,13 +56,13 @@ namespace checkSerial
             aTimer.Interval = periode;                                              //attribution au timer de sa période de comptage
 
             //attribution de l'évènement de fin de période de comptage selon le mode de comptage
-            if (mode == TEN_TICK)   //au bout de 10 périodes avec remise à 0 du compte de période possible
+            if( mode == TEN_TICK )   //au bout de 10 périodes avec remise à 0 du compte de période possible
             {
-                aTimer.Elapsed += new System.Timers.ElapsedEventHandler(timerBehavior);
+                aTimer.Elapsed += new System.Timers.ElapsedEventHandler( timerBehavior );
             }
-            else if (mode == ONE_TICK)  //chaque période
+            else if( mode == ONE_TICK )  //chaque période
             {
-                aTimer.Elapsed += new System.Timers.ElapsedEventHandler(timerEveryTickBehavior);
+                aTimer.Elapsed += new System.Timers.ElapsedEventHandler( timerEveryTickBehavior );
             }
 
         }
@@ -81,12 +76,13 @@ namespace checkSerial
         //---------------------------------------------------------------------------
         private void timerBehavior(object sender, EventArgs e)
         {
-            if (nothingHappened)    //s'il ne s'est rien passé on effectue la séquence suivante
+            if( true == nothingHappened )    //s'il ne s'est rien passé on effectue la séquence suivante
             {
-                if (timeOutCpt >= 10)   //s'il ne s'est rien passé depuis 10 periodes ou plus on ferme tout
+                if( timeOutCpt >= 10 )   //s'il ne s'est rien passé depuis 10 periodes ou plus on ferme tout
                 {
-                    t_handle();     //appel de la méthode sur laquelle pointe t_handle
+                    t_handle( );     //appel de la méthode sur laquelle pointe t_handle
                 }
+
                 timeOutCpt++;           //incrémentation du compteur
             }
             else    //s'il s'est passé quelque chose durant le cycle précédent, on remet le competeur de timeOut à l'état initial
@@ -100,15 +96,15 @@ namespace checkSerial
         //-------------------------------------------------------------------------------------------------------
         //-------- Comportement d'un timer qui répète la même action à chaque fin de periode de comptage --------
         //-------------------------------------------------------------------------------------------------------
-        private void timerEveryTickBehavior(object sender, EventArgs e)
+        private void timerEveryTickBehavior( object sender, EventArgs e )
         {
-            t_handle();     //appel de la méthode sur laquelle pointe t_handle
+            t_handle( );     //appel de la méthode sur laquelle pointe t_handle
         }
 
         //----------------------------------------------------
         //-------- Comportement d'un timer par défaut --------
         //----------------------------------------------------
-        private static void defAct()
+        private static void defAct( )
         {
             //action par défaut : ne rien faire
         }
@@ -116,7 +112,7 @@ namespace checkSerial
         //--------------------------------------------------------------------------------------------
         //-------- Methode de remise à "false" de "nothingHappened" par les objets extérieurs --------
         //--------------------------------------------------------------------------------------------
-        public void zeroTimeOut()
+        public void zeroTimeOut( )
         {
             nothingHappened = false;
         }

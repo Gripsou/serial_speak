@@ -7,8 +7,8 @@
     <ProjectGuid>{FB16AE16-0B0B-4C1E-B488-CD0D96C44B65}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SerialSpeek</RootNamespace>
-    <AssemblyName>SerialSpeek</AssemblyName>
+    <RootNamespace>SerialSpeak</RootNamespace>
+    <AssemblyName>SerialSpeak</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publier\</PublishUrl>
